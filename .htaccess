@@ -8,9 +8,9 @@
     #RewriteBase /humhub
 
     # uncomment to force https requests
-    RewriteEngine On
+    RewriteCond %{HTTP_HOST} !^example\.com [OR]
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+    RewriteRule (.*) https://humhub111.herokuapp.com/$1 [R=301,L]
 
     # prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.) - except let's encrypt challenge
     RedirectMatch 403 ^/?\.(?!/well-known/acme-challenge/[\w-]{43}$)

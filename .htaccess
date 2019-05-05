@@ -9,9 +9,8 @@
 
     # uncomment to force https requests
     RewriteEngine On
-    RewriteCond %{HTTPS} !on [OR]
-    RewriteCond %{HTTP_HOST} ^www\. [NC]
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=302,L,NE]
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.) - except let's encrypt challenge
     RedirectMatch 403 ^/?\.(?!/well-known/acme-challenge/[\w-]{43}$)

@@ -11,7 +11,7 @@
     RewriteEngine On
     RewriteCond %{HTTP:X-Forwarded-Proto} !https [OR]
     RewriteCond %{HTTP_HOST} ^www\. [NC]
-    RewriteRule ^ https://example.com%{REQUEST_URI} [L,NE,R=301]
+    RewriteRule ^ https://humhub111.herokuapp.com%{REQUEST_URI} [L,NE,R=301]
 
     # prevent httpd from serving dotfiles (.htaccess, .svn, .git, etc.) - except let's encrypt challenge
     RedirectMatch 403 ^/?\.(?!/well-known/acme-challenge/[\w-]{43}$)
